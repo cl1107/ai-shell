@@ -1,4 +1,5 @@
 import * as p from '@clack/prompts';
+import clipboardy from 'clipboardy';
 import { execaCommand } from 'execa';
 import { cyan, dim } from 'kolorist';
 import {
@@ -9,7 +10,6 @@ import {
 import { getConfig } from './helpers/config';
 import { projectName } from './helpers/constants';
 import { KnownError } from './helpers/error';
-import clipboardy from 'clipboardy';
 import i18n from './helpers/i18n';
 import { appendToShellHistory } from './helpers/shell-history';
 
@@ -134,6 +134,7 @@ export async function prompt({
       const { readExplanation } = await getExplanation({
         script,
         key,
+        model,
         apiEndpoint,
       });
       spin.stop(`${i18n.t('Explanation')}:`);
